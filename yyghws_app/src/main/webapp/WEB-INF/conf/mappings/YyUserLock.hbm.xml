@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.bsoft.app.model.YyUserLock" table="YY_USER_LOCK">
+        <id name="buuid" type="java.lang.String">
+            <column name="BUUID" length="36" />
+            <generator class="assigned" />
+        </id>
+        <property name="idcard" type="java.lang.String">
+            <column name="IDCARD" length="30" />
+        </property>
+        <property name="kh" type="java.lang.String">
+            <column name="KH" length="50" />
+        </property>
+        <property name="cardtype" type="java.lang.String">
+            <column name="CARDTYPE" length="2" />
+        </property>
+        <property name="locktime" type="java.util.Date">
+            <column name="LOCKTIME" />
+        </property>
+    </class>
+</hibernate-mapping>

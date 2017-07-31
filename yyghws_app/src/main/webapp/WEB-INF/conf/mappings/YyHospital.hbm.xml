@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.bsoft.app.model.YyHospital" table="YY_HOSPITAL">
+        <id name="HospitalId" type="java.lang.String">
+            <column name="HOSPITALID" length="40" />
+            <generator class="assigned" />
+        </id>
+        <property name="HospitalName" type="java.lang.String">
+            <column name="HOSPITALNAME" length="60" not-null="true" />
+        </property>
+        <property name="TelephoneNo" type="java.lang.String">
+            <column name="TELEPHONENO" length="30" />
+        </property>
+        <property name="Address" type="java.lang.String">
+            <column name="ADDRESS" length="256" />
+        </property>
+        <property name="Information" type="java.lang.String">
+            <column name="INFORMATION" length="4000" />
+        </property>
+        <property name="LogoUrl" type="java.lang.String">
+            <column name="LOGOURL" length="256" />
+        </property>
+        <property name="PictureUrl" type="java.lang.String">
+            <column name="PICTUREURL" length="256" />
+        </property>
+        <property name="tag1" type="java.lang.String">
+            <column name="TAG1" length="30" />
+        </property>
+        <property name="tag2" type="java.lang.String">
+            <column name="TAG2" length="30" />
+        </property>
+    </class>
+</hibernate-mapping>

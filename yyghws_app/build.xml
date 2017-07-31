@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<project name="yygh-app" basedir="." default="war">
+	<tstamp>
+		<format property="now" pattern="yyyy-MM-dd HH:mm:ss" />
+		<format property="today" pattern="yyyy-MM-dd" />
+		<format property="timestamp" pattern="yyyyMMddHHmmss" />
+		<format property="build.timestamp" pattern="yyyyMMddHH" />
+		<format property="tagDate" pattern="yyyyMMdd" />
+	</tstamp>
+
+	<property file="build.properties" />
+	<property file="version.properties" />
+
+	<path id="class.path">
+		<pathelement path="${classpath}" />
+		<fileset dir="${lib.dir}">
+			<include name="**/*.jar" />
+			<include name="**/*.zip" />
+		</fileset>
+	</path>
+
+	<!-- ================================= target: clean ================================= -->
+	<target name="clean" description="--> 删除已经编译好的类以及文件，为重新编译做准备。">
+		<delete dir="${dist.dir}" />
+	</target>
+
+	<!-- ================================= target: mkdir ================================= -->
+	<target name="mkdir" depends="clean" description="description">
+		<mkdir dir="${dist.dir}" />
+		<mkdir dir="${dist.jar.dir}" />
+		<mkdir dir="${dist.jar.dir}/distribute" />
+		<mkdir dir="${dist.package.dir}" />
+		<mkdir dir="${dist.package.WEB-INF.dir}" />
+		<mkdir dir="${dist.package.lib}" />
+	</target>
+
+	<!-- ================================= target: jar ================================= -->
+	<target name="jar" depends="mkdir" description="--> 生成MPI的jar包">
+		<jar destfile="${dist.jar.dir}/${release.name}-${version}.jar">
+			<fileset dir="${build.dir}" />
+		</jar>
+	</target>
+
+	<!-- ================================= target: copyFiles ================================= -->
+	<target name="copyFiles" depends="jar" description="--> 拷贝文件到打包文件夹">
+		<copy todir="${dist.package.lib}">
+			<fileset dir="${dist.jar.dir}">
+				<include name="yygh-app-1.0.jar" />
+			</fileset>
+		</copy>
+		<copy todir="${dist.package.lib}">
+			<fileset dir="${lib.dir}" />
+		</copy>
+		<copy todir="${dist.package.dir}">
+			<fileset dir="${webroot.dir}">
+				<exclude name="**/.svn/**" />
+				<exclude name="WEB-INF/logs/*.*" />
+				<exclude name="WEB-INF/classes/com/" />
+				<exclude name="WEB-INF/classes/META-INF/" />
+				<exclude name="WEB-INF/classes/*.*" />
+				<exclude name="**/data/index/**" />
+			</fileset>
+		</copy>
+	</target>
+
+	<!-- ================================= target: build war file ================================= -->
+	<target name="war" depends="copyFiles">
+		<war warfile="${dist.dir}/${release.war.name}" webxml="${dist.package.WEB-INF.dir}/web.xml"
+			manifest="${dist.package.dir}/META-INF/MANIFEST.MF">
+			<fileset dir="${dist.package.dir}">
+				<include name="**/**" />
+				<exclude name="**/.svn/**" />
+			</fileset>
+		</war>
+	</target>
+</project>

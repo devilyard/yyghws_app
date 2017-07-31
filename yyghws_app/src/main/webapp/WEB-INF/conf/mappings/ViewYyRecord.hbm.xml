@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-7-1 9:55:04 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.bsoft.app.model.ViewYyRecord" table="VIEW_YY_RECORD">
+    <composite-id>
+        <key-property name="YyId" type="java.lang.Long">
+            <column name="YYID" length="10"/>
+        </key-property>
+        <key-property name="HospitalId" type="java.lang.String">
+            <column name="HOSPITALID" length="40"/>
+        </key-property>
+        <key-property name="WorkId" type="java.lang.String">
+            <column name="WORKID" length="50"/>
+        </key-property>
+    </composite-id>
+        <property name="UserName" type="java.lang.String">
+            <column name="USERNAME" length="50"/>
+        </property>
+        <property name="UserId" type="java.lang.Long">
+            <column name="USERID" length="10"/>
+        </property>
+        <property name="OrderTime" type="java.util.Date">
+            <column name="ORDERTIME" length="7"/>
+        </property>
+        <property name="CardId" type="java.lang.String">
+            <column name="CARDID" length="20"/>
+        </property>
+        <property name="SeqCode" type="java.lang.String">
+            <column name="SEQCODE" length="20"/>
+        </property>
+        <property name="HospitalName" type="java.lang.String">
+            <column name="HOSPITALNAME" length="60"/>
+        </property>
+        <property name="DoctorName" type="java.lang.String">
+            <column name="DOCTORNAME" length="30"/>
+        </property>
+        <property name="DeptName" type="java.lang.String">
+            <column name="DEPTNAME" length="30"/>
+        </property>
+        <property name="TelephoneNo" type="java.lang.String">
+            <column name="TELEPHONENO" length="30"/>
+        </property>
+        <property name="PeriodCode" type="java.lang.Integer">
+            <column name="PERIODCODE" length="5"/>
+        </property>
+        <property name="DeptId" type="java.lang.String">
+            <column name="DEPTID" length="30"/>
+        </property>
+        <property name="DoctorId" type="java.lang.String">
+            <column name="DOCTORID" length="30"/>
+        </property>
+        <property name="State" type="java.lang.String">
+            <column name="STATE" length="2"/>
+        </property>
+        <property name="Price" type="java.lang.Integer">
+            <column name="PRICE" length="2"/>
+        </property>
+        <property name="AlipayInfo" type="java.lang.String">
+            <column name="ALIPAYINFO" length="2"/>
+        </property>
+        <property name="Qrfk" type="java.lang.Short">
+            <column name="QRFK" length="2"/>
+        </property>
+        <property name="Kssj" type="java.lang.String">
+            <column name="KSSJ" length="10"/>
+        </property>
+        <property name="Jssj" type="java.lang.String">
+            <column name="JSSJ" length="10"/>
+        </property>
+        <property name="Status" type="java.lang.String">
+            <column name="STATUS" length="2"/>
+        </property>
+        <property name="WorkDate" type="java.util.Date">
+            <column name="WORKDATE" length="7"/>
+        </property>
+        <property name="OrderDate" type="java.util.Date">
+            <column name="ORDERDATE" length="7"/>
+        </property>
+    </class>
+</hibernate-mapping>
